@@ -14,9 +14,9 @@
     "axios": "^1.2.0",
     "dotenv": "^16.0.3",
     "jwt-decode": "^3.1.2",
-    "react": "^17.2.0",
+    "react": "^18.2.0",
     "react-cookie": "^4.1.1",
-    "react-dom": "^17.2.0",
+    "react-dom": "^18.2.0",
     "react-google-recaptcha": "^3.1.0",
     "react-paginate": "^8.2.0",
     "react-paypal-button-v2": "^2.6.3",
@@ -32,7 +32,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "postinstall": "npm install --legacy-peer-deps",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -64,7 +63,4 @@
   "devDependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.23.4"
   }
-
-  
 }
-
