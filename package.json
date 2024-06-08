@@ -59,7 +59,7 @@
     "localhost",
     ".localhost"
   ],
-  "proxy": "http://localhost:3001",
+  "proxy": "https://be-wlwu.onrender.com",
   "devDependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.23.4"
   }
