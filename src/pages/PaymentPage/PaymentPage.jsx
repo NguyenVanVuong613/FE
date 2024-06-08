@@ -19,6 +19,7 @@ import { removeAllOrderProduct } from '../../redux/slides/orderSlide';
 import { PayPalButton } from "react-paypal-button-v2";
 import * as PaymentService from '../../services/PaymentService';
 import ZaloPayLogo from '../../assets/images/ZaloPay.png'
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const PaymentPage = () => {
   const order = useSelector((state) => state.order)
