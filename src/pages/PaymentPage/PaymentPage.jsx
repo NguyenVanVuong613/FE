@@ -16,10 +16,9 @@ import * as message from '../../components/Message/Message'
 import { updateUser } from '../../redux/slides/userSlide';
 import { useNavigate } from 'react-router-dom';
 import { removeAllOrderProduct } from '../../redux/slides/orderSlide';
-import { PayPalButton } from "react-paypal-button-v2";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import * as PaymentService from '../../services/PaymentService';
 import ZaloPayLogo from '../../assets/images/ZaloPay.png'
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const PaymentPage = () => {
   const order = useSelector((state) => state.order)
@@ -327,7 +326,7 @@ const PaymentPage = () => {
                 </WrapperTotal>
               </div>
 
-              {payment === 'paypal' && sdkReady &&
+              {/* {payment === 'paypal' && sdkReady &&
                 <div style={{ width: '320px' }}>
                   <PayPalButton
                     amount={Math.round(totalPriceMemo / 30000)}
@@ -338,7 +337,40 @@ const PaymentPage = () => {
                     }}
                   />
                 </div>
+              } */}
+
+
+              {payment === 'paypal' && sdkReady &&
+                <PayPalScriptProvider options={{ clientId: "AYuKyt_vNFTIk0RNzc7o71KF-h2hWR4gbQo9oI8o6RnawQXv5TeS0U0EVWHhBpW_ldQTODBJx4KxeBuY" }}>
+                  <div style={{ width: '320px' }}>
+                    <PayPalButtons
+                      style={{ layout: "vertical" }}
+                      createOrder={(data, actions) => {
+                        return actions.order.create({
+                          purchase_units: [
+                            {
+                              amount: {
+                                value: (totalPriceMemo / 24540).toFixed(2),
+                              },
+                            },
+                          ],
+                        });
+                      }}
+                      onApprove={(data, actions) => {
+                        return actions.order.capture().then((details) => {
+                          onSuccessPaypal(details, data);
+                        });
+                      }}
+                      onError={(err) => {
+                        alert("Thanh toán không thành công. Vui lòng thử lại sau!");
+                      }}
+                    />
+                  </div>
+                </PayPalScriptProvider>
               }
+
+
+
               {
                 payment === 'stripe' &&
                 <ButtonComponent
