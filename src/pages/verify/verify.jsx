@@ -12,7 +12,7 @@ const EmailVerify = () => {
 	useEffect(() => {
 		const verifyEmailUrl = async () => {
 			try {
-				const url = `http://localhost:3001/api/user/add-user/${param.email}/${param.password}/${param.token}`;
+				const url = `https://be-wlwu.onrender.com/api/user/add-user/${param.email}/${param.password}/${param.token}`;
 				const { data } = await axios.get(url);
 				console.log(data);
 				setValidUrl(true);
