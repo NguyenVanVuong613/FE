@@ -258,6 +258,8 @@ const PaymentPage = () => {
     document.body.appendChild(script)
   }
 
+
+
   useEffect(() => {
     if (!window.paypal) {
       addPaypalScript()
