@@ -340,8 +340,8 @@ const PaymentPage = () => {
               } */}
 
 
-              {payment === 'paypal' && sdkReady &&
-                <PayPalScriptProvider options={{ clientId: "AYuKyt_vNFTIk0RNzc7o71KF-h2hWR4gbQo9oI8o6RnawQXv5TeS0U0EVWHhBpW_ldQTODBJx4KxeBuY" }}>
+{payment === 'paypal' && sdkReady &&
+                <PayPalScriptProvider options={{ "client-id": "your-client-id" }}>
                   <div style={{ width: '320px' }}>
                     <PayPalButtons
                       style={{ layout: "vertical" }}
@@ -368,7 +368,6 @@ const PaymentPage = () => {
                   </div>
                 </PayPalScriptProvider>
               }
-
 
 
               {
