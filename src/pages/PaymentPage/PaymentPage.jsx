@@ -202,20 +202,26 @@ const PaymentPage = () => {
     // });
     // dispatch(removeAllOrderProduct({ listChecked: arrayOrdered }))
 
-    const session = await PaymentService.StripePayment(data);
+    const session = await PaymentService.StripePayment({
+      totalPrice: (totalPriceMemo / 24540).toFixed(0),
+    });
     const url = session.data.url
     const windowFeatures = 'location=yes,height=570,width=520,scrollbars=yes,status=yes,top=100,left=500'
     window.open(url, 'stripe', windowFeatures)
     //window.location.href = session.url
   }
   const momobtn = async () => {
-    const session = await PaymentService.MomoPayment(data);
+    const session = await PaymentService.MomoPayment({
+      totalPrice: totalPriceMemo,
+    });
     const url = session.data.payUrl
     const windowFeatures = 'location=yes,height=570,width=520,scrollbars=yes,status=yes,top=100,left=500'
     window.open(url, 'stripe', windowFeatures)
   }
   const zalopaybtn = async () => {
-    const session = await PaymentService.ZaloPayment(data);
+    const session = await PaymentService.ZaloPayment({
+      totalPrice: totalPriceMemo,
+    });
     const url = session.data.order_url
     const windowFeatures = 'location=yes,height=570,width=520,scrollbars=yes,status=yes,top=100,left=500'
     window.open(url, 'stripe', windowFeatures)
