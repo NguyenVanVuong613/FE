@@ -13,7 +13,6 @@ import Loading from '../../components/LoadingComponent/Loading'
 import * as message from '../../components/Message/Message'
 import ReCaptchaV2 from 'react-google-recaptcha';
 import { useEffect } from 'react'
-import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
 
 const SignUpPage = () => {
   const navigate = useNavigate()
@@ -61,13 +60,8 @@ const SignUpPage = () => {
 
   const handleSignUp = () => {
     mutation.mutate({ email, password, confirmPassword })
-    setDialogOpen(true);
+
   }
-
-  const handleClose = () => {
-    setDialogOpen(false);
-  };
-
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0, 0, 0, 0.53)', height: '100vh' }}>
@@ -134,13 +128,6 @@ const SignUpPage = () => {
               textbutton={'Đăng ký'}
               styleTextButton={{ color: '#fff', fontSize: '15px', fontWeight: '700' }}
             ></ButtonComponent>
-            <Dialog open={dialogOpen} onClose={handleClose}>
-        <DialogTitle>Xác thực</DialogTitle>
-        <DialogContent>Vui lòng xác thực trong gmail</DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">OK</Button>
-        </DialogActions>
-      </Dialog>
           </Loading>
           <ReCaptchaV2
             sitekey="6Lfe6-4pAAAAAKUDKhi2hDcN2HwsyWnVeu4Xw-bt"
