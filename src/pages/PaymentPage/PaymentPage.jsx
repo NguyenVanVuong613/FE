@@ -194,6 +194,8 @@ const PaymentPage = () => {
       }
     )
   }
+
+
   const stripebtn = async () => {
     // handleAddOrder();
     // const arrayOrdered = []
@@ -202,13 +204,29 @@ const PaymentPage = () => {
     // });
     // dispatch(removeAllOrderProduct({ listChecked: arrayOrdered }))
 
+    //const session = await PaymentService.StripePayment({
+      //totalPrice: (totalPriceMemo / 24540).toFixed(0),
+    //});
+    //const url = session.data.url
+    //const windowFeatures = 'location=yes,height=570,width=520,scrollbars=yes,status=yes,top=100,left=500'
+    //window.open(url, 'stripe', windowFeatures)
+    //window.location.href = session.url
+
+
+    handleAddOrder();
+    const arrayOrdered = []
+    order?.orderItemsSlected?.forEach(element => {
+      arrayOrdered.push(element.product)
+    });
+    dispatch(removeAllOrderProduct({ listChecked: arrayOrdered }))
     const session = await PaymentService.StripePayment({
       totalPrice: (totalPriceMemo / 24540).toFixed(0),
     });
     const url = session.data.url
-    const windowFeatures = 'location=yes,height=570,width=520,scrollbars=yes,status=yes,top=100,left=500'
-    window.open(url, 'stripe', windowFeatures)
-    //window.location.href = session.url
+    // const windowFeatures = 'location=yes,height=570,width=520,scrollbars=yes,status=yes,top=100,left=500'
+    // window.open(url, 'stripe', windowFeatures)
+    // const url = session.data.url
+    window.location.href = url
   }
   const momobtn = async () => {
     const session = await PaymentService.MomoPayment({
@@ -264,7 +282,7 @@ const PaymentPage = () => {
     document.body.appendChild(script)
   }
 
-
+  
 
   useEffect(() => {
     if (!window.paypal) {
